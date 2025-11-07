@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+  completed   Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Group     Group?   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  groupId   String?
+
+  @@map("task")
+}
+
+model Group {
+  id          String  @id @default(uuid())
+  name        String
+  description String?
+
+  tasks Task[]
+
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+
+  @@map("group")
+}
