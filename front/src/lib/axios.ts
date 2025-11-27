@@ -1,0 +1,7 @@
+import { env } from '@/env/env'
+import axios from 'axios'
+
+export const api = axios.create({
+  baseURL: env.VITE_BASE_URL,
+  withCredentials: true,
+})
