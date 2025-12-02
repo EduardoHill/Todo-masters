@@ -3,7 +3,7 @@ import z from 'zod'
 import { CreateGroupFunction } from '../functions/create-group.function.ts'
 
 const schemaBody = z.object({
-  name: z.string(),
+  name: z.string().min(3, 'O nome deve ter no mínimo 3 caracteres'),
   description: z.string().optional(),
 })
 

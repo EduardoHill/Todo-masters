@@ -15,7 +15,7 @@ export async function getGroupDetails({ groupId }: GetGroupDetailsProps) {
       description: true,
       _count: {
         select: {
-          tasks: true,
+          tasks: { where: { completed: false } },
         },
       },
       tasks: {
@@ -25,6 +25,7 @@ export async function getGroupDetails({ groupId }: GetGroupDetailsProps) {
           description: true,
           completed: true,
         },
+        orderBy: { completed: 'asc' },
       },
     },
   })

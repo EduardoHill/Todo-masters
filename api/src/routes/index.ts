@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import { createGroupRoute } from './create-groupe.route.ts'
+import { createGroupRoute } from './create-group.route.ts'
 import { updateGroupDataRoute } from './update-group.function.ts'
 import { createTaskRoute } from './create-task.route.ts'
 import { deleteGroupRoute } from './delete-group.route.ts'
